@@ -14,6 +14,7 @@ import time
 import asyncore
 import signal
 import lttools
+import six
 
 oldout = sys.stdout
 olderr = sys.stderr
@@ -47,7 +48,7 @@ def asUnicode(s):
     return str(s)
 
 def ensureUtf(s):
-  if type(s) == unicode:
+  if isinstance(s, six.text_type):
     return s.encode('utf8', 'ignore')
   else:
     return str(s)
